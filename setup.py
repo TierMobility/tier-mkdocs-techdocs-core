@@ -26,16 +26,16 @@ with open("requirements.txt") as f:
     required = f.read().splitlines()
 
 setup(
-    name="mkdocs-techdocs-core",
-    version="1.0.1",
+    name="tier-mkdocs-techdocs-core",
+    version="0.0.1",
     description="The core MkDocs plugin used by Backstage's TechDocs as a wrapper around "
-    "multiple MkDocs plugins and Python Markdown extensions",
+    "multiple MkDocs plugins and Python Markdown extensions. Customized by TIER Mobility SE.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     keywords="mkdocs",
-    url="https://github.com/backstage/mkdocs-techdocs-core",
-    author="TechDocs Core",
-    author_email="pulp-fiction@spotify.com",
+    url="https://github.com/TierMobility/tier-mkdocs-techdocs-core",
+    author="TIER Mobility DX Team",
+    author_email="dx@tier.app",
     license="Apache-2.0",
     python_requires=">=3.7",
     install_requires=required,
