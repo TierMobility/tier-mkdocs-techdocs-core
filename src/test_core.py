@@ -3,6 +3,7 @@ import mkdocs.plugins as plugins
 from .core import TechDocsCore
 from jinja2 import Environment, PackageLoader, select_autoescape
 import json
+import os
 
 
 class DummyTechDocsCorePlugin(plugins.BasePlugin):
@@ -57,3 +58,14 @@ class TestTechDocsCoreConfig(unittest.TestCase):
         rendered = template.render(config=config)
         as_json = json.loads(rendered)
         self.assertEquals(config, as_json)
+
+    def test_kroki_plugin_reads_from_env(self):
+        orig_kroki_server_url = os.environ.get("KROKI_SERVER_URL")
+        orig_kroki_download_images = os.environ.get("KROKI_DOWNLOAD_IMAGES")
+        test_url = "https://test-kroki.com"
+        os.environ["KROKI_SERVER_URL"] = test_url
+        os.environ["KROKI_DOWNLOAD_IMAGES"] = "1"
+        config = self.techdocscore.on_config(self.mkdocs_yaml_config)
+        self.assertTrue("kroki" in config["plugins"])
+        self.assertEqual(config["plugins"]["kroki"].config["ServerURL"], test_url)
+        self.assertEqual(config["plugins"]["kroki"].config["DownloadImages"], True)
