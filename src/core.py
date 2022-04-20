@@ -54,7 +54,7 @@ class TechDocsCore(BasePlugin):
         config["theme"].dirs.append(self.tmp_dir_techdocs_theme.name)
 
         # Plugins
-        del config["plugins"]["techdocs-core"]
+        del config["plugins"]["tier-techdocs-core"]
 
         search_plugin = SearchPlugin()
         search_plugin.load_config({"prebuild_index": True, "indexing": "full"})

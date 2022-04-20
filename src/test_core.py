@@ -14,7 +14,7 @@ class TestTechDocsCoreConfig(unittest.TestCase):
         self.techdocscore = TechDocsCore()
         self.plugin_collection = plugins.PluginCollection()
         plugin = DummyTechDocsCorePlugin()
-        self.plugin_collection["techdocs-core"] = plugin
+        self.plugin_collection["tier-techdocs-core"] = plugin
         self.mkdocs_yaml_config = {"plugins": self.plugin_collection}
 
     def test_removes_techdocs_core_plugin_from_config(self):
