@@ -49,5 +49,5 @@ setup(
         "Programming Language :: Python :: 3.7",
     ],
     packages=find_packages(),
-    entry_points={"mkdocs.plugins": ["techdocs-core = src.core:TechDocsCore"]},
+    entry_points={"mkdocs.plugins": ["tier-techdocs-core = src.core:TechDocsCore"]},
 )
