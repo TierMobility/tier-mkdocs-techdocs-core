@@ -57,7 +57,7 @@ class TechDocsCore(BasePlugin):
         del config["plugins"]["techdocs-core"]
 
         search_plugin = SearchPlugin()
-        search_plugin.load_config({})
+        search_plugin.load_config({"prebuild_index": True, "indexing": "full"})
         monorepo_plugin = MonorepoPlugin()
         monorepo_plugin.load_config({})
         kroki_plugin = KrokiPlugin()
