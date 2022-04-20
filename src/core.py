@@ -62,7 +62,9 @@ class TechDocsCore(BasePlugin):
         monorepo_plugin.load_config({})
 
         kroki_server_url = os.environ.get("KROKI_SERVER_URL", "https://kroki.io")
-        kroki_download_images = os.environ.get("KROKI_DOWNLOAD_IMAGES", False)
+        kroki_download_images = os.environ.get(
+            "KROKI_DOWNLOAD_IMAGES", "0"
+        ).lower() in ("true", "1")
         kroki_plugin = KrokiPlugin()
         kroki_plugin.load_config(
             {"ServerURL": kroki_server_url, "DownloadImages": kroki_download_images}
