@@ -1,18 +1,18 @@
 # mkdocs-techdocs-core
 
-This is the base [Mkdocs](https://mkdocs.org) plugin used when using Mkdocs with Spotify's [TechDocs](https://backstage.io/docs/features/techdocs/techdocs-overview). It is written in Python and packages all of our Mkdocs defaults, such as theming, plugins, etc in a single plugin.
+This is the base [Mkdocs](https://mkdocs.org) plugin used at TIER Mobility with Spotify's [TechDocs](https://backstage.io/docs/features/techdocs/techdocs-overview). It is forked from the [Backstage core plugin](https://github.com/backstage/mkdocs-techdocs-core).
 
-[![Package on PyPI](https://img.shields.io/pypi/v/mkdocs-techdocs-core)](https://pypi.org/project/mkdocs-techdocs-core/)
+[![Package on PyPI](https://img.shields.io/pypi/v/tier-mkdocs-techdocs-core)](https://pypi.org/project/tier-mkdocs-techdocs-core/)
 
 ## Usage
 
 > Requires Python version >= 3.7
 
 ```bash
-$ pip install mkdocs-techdocs-core
+$ pip install tier-mkdocs-techdocs-core
 ```
 
-Once you have installed the `mkdocs-techdocs-core` plugin, you'll need to add it to your `mkdocs.yml`.
+Once you have installed the `tier-mkdocs-techdocs-core` plugin, you'll need to add it to your `mkdocs.yml`.
 
 ```yaml
 site_name: Backstage Docs
@@ -22,7 +22,7 @@ nav:
   - Developing a Plugin: developing-a-plugin.md
 
 plugins:
-  - techdocs-core
+  - tier-techdocs-core
 ```
 
 ## Development
@@ -35,7 +35,7 @@ You can install this package locally using `pip` and the `--editable` flag used 
 pip install --editable .
 ```
 
-You'll then have the `techdocs-core` package available to use in Mkdocs and `pip` will point the dependency to this folder.
+You'll then have the `tier-techdocs-core` package available to use in Mkdocs and `pip` will point the dependency to this folder.
 
 ### Linting
 
@@ -57,12 +57,12 @@ documentation can be loaded and parsed as expected in the Backstage frontend.
 The recommended way to do so is the following:
 
 1. Make the expected dependency change locally in `requirements.txt`.
-2. Clone the [techdocs-container](https://github.com/backstage/techdocs-container)
+2. Clone the [techdocs-container](https://github.com/TierMobility/techdocs-container)
    image and, within the cloned directory, copy the entire contents of your
-   local version of `mkdocs-techdocs-core`, e.g. named `local-mkdocs-techdocs-core`.
+   local version of `tier-mkdocs-techdocs-core`, e.g. named `local-mkdocs-techdocs-core`.
 3. Just before the `RUN pip install` command in `techdocs-container`'s
    Dockerfile, add a `COPY` command that copies the contents of your modified
-   `mkdocs-techdocs-core` directory into the container's file system. Something
+   `tier-mkdocs-techdocs-core` directory into the container's file system. Something
    like: `COPY ./local-mkdocs-techdocs-core/ /local-mkdocs-techdocs-core/`
 4. Modify the `RUN pip install`... command to install an editable version of
    the copied local plugin, rather than the specific version. Something like...
@@ -79,20 +79,15 @@ techdocs:
     dockerImage: "mkdocs:local-dev"
 ```
 
-### Release
-
-1. Update the [Changelog](https://github.com/backstage/mkdocs-techdocs-core/blob/main/README.md#changelog).
-2. Bump up the version number in `setup.py` which triggers the release workflow on [GitHub Actions](.github/workflows/pypi-publish.yml) to publish a new version in PyPI.
-
 ## MkDocs plugins and extensions
 
-The TechDocs Core MkDocs plugin comes with a set of extensions and plugins that mkdocs supports. Below you can find a list of all extensions and plugins that are included in the
-TechDocs Core plugin:
+The TechDocs Core MkDocs plugin comes with a set of extensions and plugins that mkdocs supports. Below you can find a list of all extensions and plugins that are included in the TIER TechDocs Core plugin:
 
 Plugins:
 
 - [search](https://www.mkdocs.org/user-guide/configuration/#search): A search plugin is provided by default with MkDocs which uses [lunr.js](https://lunrjs.com/) as a search engine.
 - [mkdocs-monorepo-plugin](https://github.com/backstage/mkdocs-monorepo-plugin): This plugin enables you to build multiple sets of documentation in a single MkDocs project. It is designed to address writing documentation in Spotify's largest and most business-critical codebases (typically monoliths or monorepos).
+- [kroki](https://github.com/AVATEAM-IT-SYSTEMHAUS/mkdocs-kroki-plugin): This plugin enables you to embed Kroki-Diagrams into your documentation.
 
 Extensions:
 
@@ -117,145 +112,16 @@ Extensions:
   - tilde: Tilde is syntactically built around the ~ character. It adds support for inserting subscripts and adds an easy way to place text in a <_del_> tag.
 - [markdown_inline_graphviz](https://pypi.org/project/markdown-inline-graphviz/): A Python Markdown extension replaces inline Graphviz definitions with inline SVGs or PNGs.
   Activate the inline_graphviz extension using the [usage instructions](https://github.com/sprin/markdown-inline-graphviz#usage).
-
-- [plantuml_markdown](https://pypi.org/project/plantuml-markdown/): This plugin implements a block extension which can be used to specify a PlantUML diagram which will be converted into an image and inserted in the document.
-
-  - Note that the format `svg_object` is not supported for rendering diagrams. Read more in the [TechDocs troubleshooting](https://backstage.io/docs/features/techdocs/troubleshooting#plantuml-with-svg_object-doesnt-render) section.
-
 - [mdx_truly_sane_lists](https://pypi.org/project/mdx-truly-sane-lists/): An extension for Python-Markdown that makes lists truly sane. Features custom indents for nested lists and fix for messy linebreaks and paragraphs between lists.
 
 ## Changelog
 
-### 1.0.1
+### 0.0.1
 
-`Jinja2` pinned to v3.0.3. 
+Forked from the original [mkdocs-techdocs-core](https://github.com/backstage/mkdocs-techdocs-core) plugin.
 
-### 1.0.0
-
-- This package has been promoted to v1.0!
-
-> **Note:** Going forward, this package will follow [semver](https://semver.org/#semantic-versioning-200) conventions.
-
-### 0.2.3
-
-- Upgrade mkdocs-material and its dependencies
-
-### 0.2.2
-
-- Update `plantuml-markdown` version to 3.5.0 for image maps support
-
-### 0.2.1
-
-- Fix run-time `module 'pyparsing' has no attribute 'downcaseTokens'` error as
-  a result of shifting python dependencies.
-- Update to latest `mkdocs-monorepo-plugin`, which allows use of `.yaml` file
-  extensions and non-slug-like `site_name`s in monorepos.
-
-### 0.2.0
-
-- Add mdx_truly_sane_lists for dealing with the very annoying bullet differences in mkdocs vs commonmark / gf markdown. See https://github.com/backstage/backstage/issues/6057#issuecomment-862822002
-
-### 0.1.2
-
-- Fix the dependency version of Markdown to ensure GraphViz SVG rendering works.
-
-### 0.1.1
-
-- Ensure required mkdocs-monorepo-plugin is compatible with Mkdocs `1.2.x`.
-
-### 0.1.0
-
-- Improved dependency compatibility with other mkdocs plugins.
-- Upgraded mkdocs minimum to `1.2.2`
-
-### 0.0.16
-
-- Reused data from `requirements.txt` file in `install_requires` of `setup.py`. [#24](https://github.com/backstage/mkdocs-techdocs-core/pull/24)
-
-### 0.0.15
-
-- Upgrade monorepo to track latest patch, includes various bug fixes. [#22](https://github.com/backstage/mkdocs-techdocs-core/pull/22)
-
-### 0.0.14
-
-- Upgrade plantuml-markdown to 3.4.2 with support for external file sources. [#18](https://github.com/backstage/mkdocs-techdocs-core/pull/18)
-
-### 0.0.13
-
-- Fixed issue where the whole temp directory could be included in the built site output. [#7](https://github.com/backstage/mkdocs-techdocs-core/issues/7)
-
-### 0.0.12
-
-- Updated home repository to be the new https://github.com/backstage/mkdocs-techdocs-core
-
-### 0.0.11
-
-- Any MkDocs plugin configurations from mkdocs.yml will now work and override the default configuration. See https://github.com/backstage/backstage/issues/3017
-
-### 0.0.10
-
-- Pin Markdown version to fix issue with Graphviz
-
-### 0.0.9
-
-- Change development status to 3 - Alpha
-
-### 0.0.8
-
-- Superfences and Codehilite doesn't work very well together (squidfunk/mkdocs-material#1604) so therefore the codehilite extension is replaced by pymdownx.highlight
-
-* Uses pymdownx extensions v.7.1 instead of 8.0.0 to allow legacy_tab_classes config. This makes the techdocs core plugin compatible with the usage of tabs for grouping markdown with the following syntax:
-
-````
-    ```java tab="java 2"
-        public void function() {
-            ....
-        }
-    ```
-````
-
-as well as the new
-
-````
-    === "Java"
-
-    ```java
-    public void function() {
-        ....
-    }
-    ```
-````
-
-The pymdownx extension will be bumped too 8.0.0 in the near future.
-
-- pymdownx.tabbed is added to support tabs to group markdown content, such as codeblocks.
-
-- "PyMdown Extensions includes three extensions that are meant to replace their counterpart in the default Python Markdown extensions." Therefore some extensions has been taken away in this version that comes by default from pymdownx.extra which is added now (https://facelessuser.github.io/pymdown-extensions/usage_notes/#incompatible-extensions)
-
-### 0.0.7
-
-- Fix an issue with configuration of emoji support
-
-### 0.0.6
-
-- Further adjustments to versions to find ones that are compatible
-
-### 0.0.5
-
-- Downgrade some versions of markdown extensions to versions that are more stable
-
-### 0.0.4
-
-- Added support for more mkdocs extensions
-  - mkdocs-material
-  - mkdocs-monorepo-plugin
-  - plantuml-markdown
-  - markdown_inline_graphviz_extension
-  - pygments
-  - pymdown-extensions
+- Included kroki plugin
 
 ## License
-
-Copyright 2020-2021 © The Backstage Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage
 
 Licensed under the Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
