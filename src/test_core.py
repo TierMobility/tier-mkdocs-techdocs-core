@@ -69,3 +69,9 @@ class TestTechDocsCoreConfig(unittest.TestCase):
         self.assertTrue("kroki" in config["plugins"])
         self.assertEqual(config["plugins"]["kroki"].config["ServerURL"], test_url)
         self.assertEqual(config["plugins"]["kroki"].config["DownloadImages"], True)
+
+    def test_search_plugin_modified_defaults(self):
+        config = self.techdocscore.on_config(self.mkdocs_yaml_config)
+        self.assertTrue("search" in config["plugins"])
+        self.assertEqual(config["plugins"]["search"].config["prebuild_index"], True)
+        self.assertEqual(config["plugins"]["search"].config["indexing"], "full")
