@@ -1,4 +1,4 @@
-# mkdocs-techdocs-core
+# tier-mkdocs-techdocs-core
 
 This is the base [Mkdocs](https://mkdocs.org) plugin used at TIER Mobility with Spotify's [TechDocs](https://backstage.io/docs/features/techdocs/techdocs-overview). It is forked from the [Backstage core plugin](https://github.com/backstage/mkdocs-techdocs-core).
 
