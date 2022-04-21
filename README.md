@@ -88,6 +88,8 @@ Plugins:
 - [search](https://www.mkdocs.org/user-guide/configuration/#search): A search plugin is provided by default with MkDocs which uses [lunr.js](https://lunrjs.com/) as a search engine.
 - [mkdocs-monorepo-plugin](https://github.com/backstage/mkdocs-monorepo-plugin): This plugin enables you to build multiple sets of documentation in a single MkDocs project. It is designed to address writing documentation in Spotify's largest and most business-critical codebases (typically monoliths or monorepos).
 - [kroki](https://github.com/AVATEAM-IT-SYSTEMHAUS/mkdocs-kroki-plugin): This plugin enables you to embed Kroki-Diagrams into your documentation.
+  - `ServerURL` parameter can be set from `KROKI_SERVER_URL` environmental variable
+  - `DownloadImages` parameter can be set from `KROKI_DOWNLOAD_IMAGES` environmental variable
 
 Extensions:
 
@@ -116,7 +118,7 @@ Extensions:
 
 ## Changelog
 
-### 0.0.1
+### 0.0.3
 
 Forked from the original [mkdocs-techdocs-core](https://github.com/backstage/mkdocs-techdocs-core) plugin.
 
