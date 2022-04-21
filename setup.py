@@ -29,7 +29,7 @@ setup(
     name="tier-mkdocs-techdocs-core",
     version="0.0.1",
     description="The core MkDocs plugin used by Backstage's TechDocs as a wrapper around "
-    "multiple MkDocs plugins and Python Markdown extensions. Customized by TIER Mobility SE.",
+    "multiple MkDocs plugins and Python Markdown extensions - Customized by TIER Mobility SE.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     keywords="mkdocs",

@@ -121,6 +121,9 @@ Extensions:
 Forked from the original [mkdocs-techdocs-core](https://github.com/backstage/mkdocs-techdocs-core) plugin.
 
 - Included kroki plugin
+  - Allow setting kroki server URL via environmental variable `KROKI_SERVER_URL`
+  - Allow setting kroki download image policy via environmental variable `KROKI_DOWNLOAD_IMAGES`
+- Customize `search` plugin configuration to have a pre-build index by default
 
 ## License
 
