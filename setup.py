@@ -27,7 +27,7 @@ with open("requirements.txt") as f:
 
 setup(
     name="tier-mkdocs-techdocs-core",
-    version="0.0.5",
+    version="0.0.6",
     description="The core MkDocs plugin used by Backstage's TechDocs as a wrapper around "
     "multiple MkDocs plugins and Python Markdown extensions - Customized by TIER Mobility SE.",
     long_description=long_description,
@@ -49,5 +49,7 @@ setup(
         "Programming Language :: Python :: 3.7",
     ],
     packages=find_packages(),
-    entry_points={"mkdocs.plugins": ["tier-techdocs-core = src.core:TechDocsCore"]},
+    entry_points={
+        "mkdocs.plugins": ["tier-techdocs-core = tier_techdocs_core.core:TechDocsCore"]
+    },
 )
