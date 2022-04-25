@@ -118,7 +118,7 @@ Extensions:
 
 ## Changelog
 
-### 0.0.6
+### 0.0.8
 
 Forked from the original [mkdocs-techdocs-core](https://github.com/backstage/mkdocs-techdocs-core) plugin.
 
