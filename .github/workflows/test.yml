@@ -2,11 +2,13 @@ name: Lint & Run Tests
 
 on:
   push:
-    paths-ignore:
-      - "setup.py"
+    branches:
+      - "*"
+    tags:
+      - "!*"
   pull_request:
-    paths-ignore:
-      - "setup.py"
+    branches:
+      - "*"
 
 jobs:
   lint:

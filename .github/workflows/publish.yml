@@ -2,9 +2,10 @@ name: Publish to PyPi
 
 on:
   push:
-    branches: [main]
-    paths:
-      - "setup.py"
+    branches:
+      - "!*"
+    tags:
+      - "v*"
 
 jobs:
   lint:
