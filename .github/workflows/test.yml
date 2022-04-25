@@ -1,6 +1,12 @@
 name: Lint & Run Tests
 
-on: [push, pull_request]
+on:
+  push:
+    paths-ignore:
+      - "setup.py"
+  pull_request:
+    paths-ignore:
+      - "setup.py"
 
 jobs:
   lint:
