@@ -81,7 +81,8 @@ techdocs:
 
 ## MkDocs plugins and extensions
 
-The TechDocs Core MkDocs plugin comes with a set of extensions and plugins that mkdocs supports. Below you can find a list of all extensions and plugins that are included in the TIER TechDocs Core plugin:
+The TechDocs Core MkDocs plugin comes with a set of extensions and plugins that mkdocs supports. Below you can find a list of all extensions and plugins that are included in the
+TechDocs Core plugin:
 
 Plugins:
 
@@ -116,11 +117,19 @@ Extensions:
   Activate the inline_graphviz extension using the [usage instructions](https://github.com/sprin/markdown-inline-graphviz#usage).
 - [mdx_truly_sane_lists](https://pypi.org/project/mdx-truly-sane-lists/): An extension for Python-Markdown that makes lists truly sane. Features custom indents for nested lists and fix for messy linebreaks and paragraphs between lists.
 
+## Caveats
+
+### Theme
+
+We only use `material-mkdocs` as base styles because Backstage also uses the `Material UI` on the client-side. We don't expect people to use themes other than `Material UI` to maintain consistency across all Backstage pages (in other words, documentation pages have the same look and feel as any other Backstage page) and so we use the `BackstageTheme` configured in Front-end application as the source of truth for all application design tokens like colors, typography and etc. So here you can [see](https://github.com/backstage/backstage/blob/master/plugins/techdocs/src/reader/components/TechDocsReaderPageContent/dom.tsx#L160-L692) that some styles will always be overridden regardless of the `mkdocs-material` plugin theme settings and this can cause unexpected behavior for those who override the theme setting in a `mkdocs.yaml` file.
+
 ## Changelog
 
-### 0.0.8
+### 0.0.9
 
-Forked from the original [mkdocs-techdocs-core](https://github.com/backstage/mkdocs-techdocs-core) plugin.
+- Merged upstream [`v1.1.2`](https://pypi.org/project/mkdocs-techdocs-core/1.1.2/).
+
+### 0.0.8
 
 - Included kroki plugin
   - Allow setting kroki server URL via environmental variable `KROKI_SERVER_URL`
