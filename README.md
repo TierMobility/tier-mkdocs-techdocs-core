@@ -125,6 +125,10 @@ We only use `material-mkdocs` as base styles because Backstage also uses the `Ma
 
 ## Changelog
 
+### 0.0.10
+
+- Catch up on upgrade of `mkdocs-monorepo-plugin` to v1.0.1, missed in the previous release
+
 ### 0.0.9
 
 - Merged upstream [`v1.1.2`](https://pypi.org/project/mkdocs-techdocs-core/1.1.2/).
